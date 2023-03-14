@@ -1,0 +1,262 @@
+body {
+    font-family: "Poppins", sans-serif;
+    max-width: 1280px;
+    margin: 0 auto; /* Centraliza os itens */
+  }
+  
+  ::-webkit-scrollbar{
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track{
+    
+    background-color: #191919;
+  }
+  ::-webkit-scrollbar-thumb{  
+    border-radius: 2px;
+    background-color: #555357;
+    
+  }
+  
+  
+  main::after {
+    content: "";
+    min-height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 0.05926120448179273) 50%,
+      rgba(0, 0, 0, 1) 90%); /* Background gradiente, criado no site https://cssgradient.io/ */
+    z-index: -1;  
+  }
+  
+  .bt{
+    display: flex;
+    justify-content: end;
+    padding: 2%;
+  }
+  .btmenu{
+    padding: 1%;
+    background-color: #191919;
+    border: 2px solid #FFFFFF;
+    border-radius: 25%;
+  }
+  .menu{
+    color: #1100ff;
+    font-size: 15px;  
+  }
+  
+  .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /*Epaça os itens unifomimentes  */
+    align-items: center;  
+  }
+  
+  
+  .info img {
+    max-width: 350px;
+    margin-left: 30px;
+    margin-bottom: 50px;
+  }
+  
+  .info .sinopse {
+    width: 49%;
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 30px; /* Espaçamento entre linhas do paragrafo*/
+    display: none;
+  }
+  
+  .container .info .sinopse.sinopseativa{
+    display: block;
+  }
+  
+  .botoes-carrossel {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .botoes-carrossel .botao {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+   
+  }
+  
+  .botoes-carrossel .botao.selecionado {
+    background-color: #0471ee;
+  }
+  
+  .menu-lateral {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+  }
+  
+  .menu-lateral ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .menu-lateral img {
+    width: 30px;
+    filter: invert(1); /*Mudar a cor de uma imagem*/
+    transition: 0.3s ease-in-out;
+    
+  }
+  
+  .menu-lateral img:hover {
+    transform: scale(1.2);
+  }
+  
+  .carrossel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1; /*Deixa as imagens por baixo de todos os intens*/
+  }
+  
+  .carrossel .imagem {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover; /*Cobre todo o tamanho setado sem perder a qualidade da imagem*/
+    display: none;
+    animation: mudarImagem 0.7s;
+  }
+  
+  .carrossel .imagem.ativa {
+    display: block;
+  }
+  
+  @keyframes mudarImagem {
+    from {
+      opacity: 0.85;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .personagens {
+    width: 100%;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+  }
+  
+  .personagens h2 {
+    color: #ffffff;
+    font-size: 55px;
+    text-align: center;
+  }
+  
+  .personagens span {
+    color: #ebd409;
+  }
+  
+  .card-personagens {
+    display: flex;
+    margin-top: 1%;
+    width: 80%;
+    height: 70%;
+  }
+  
+  .card {
+    display: flex;
+    perspective: 1000px;
+    width: 90%;
+    height: 95%;
+  }
+  
+  .front,
+  .back {
+    height: 90%;
+    width: 85%;
+    background-color: rgb(0, 0, 0, 0.2);
+    border-radius: 20px;
+    display: flex;
+    padding: 2%;
+    border: solid 2px #f3eded;
+  }
+  
+  .front{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .back{
+      border: solid 5px #f8f7f6;
+      background-color: rgb(0, 0, 0, 0.7);
+  }
+  
+  .front img {
+    width: 100%;
+    border-radius: 20px;
+    
+   
+  }
+  
+  .front h5 {
+    text-decoration: underline 5px #FFAA00;
+    color: #FFFFFF;
+    font-size: 22px;
+  }
+  
+  .back p {
+    font-size: 14px;
+    color: #FFFFFF;
+  }
+  
+  .back p span {
+    font-size: 16px;
+  }
+  
+  .front,
+  .back {
+    position: absolute;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: all 1s ease;
+  }
+  
+  .front {
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(0deg);
+  }
+  
+  .back {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transform: rotateY(180deg);
+  }
+  
+  .card:hover .front {
+    transform: rotateY(-180deg);
+  }
+  
+  .card:hover .back {
+    transform: rotateY(0deg);
+  }
+  
